@@ -2,11 +2,11 @@ class Monitor < Formula
   desc "Task observer wrapper for codex and claude on macOS"
   homepage "https://github.com/ycloud-sean/monitor-cli-task-observer"
   license "ISC"
-  version "1.0.10"
+  version "1.0.11"
 
-  url "https://cdn.jsdelivr.net/gh/ycloud-sean/monitor-cli-task-observer@homebrew-artifacts/monitor-runtime-v1.0.10-macos-arm64.tar.gz"
-  mirror "https://raw.githubusercontent.com/ycloud-sean/monitor-cli-task-observer/homebrew-artifacts/monitor-runtime-v1.0.10-macos-arm64.tar.gz"
-  sha256 "baec422f6c5f1ed88d4629899068ee05668b6899d49a960d133d892efce9c585"
+  url "https://cdn.jsdelivr.net/gh/ycloud-sean/monitor-cli-task-observer@homebrew-artifacts/monitor-runtime-v1.0.11-macos-arm64.tar.gz"
+  mirror "https://raw.githubusercontent.com/ycloud-sean/monitor-cli-task-observer/homebrew-artifacts/monitor-runtime-v1.0.11-macos-arm64.tar.gz"
+  sha256 "762634e7b90d6580e0ca4e1ea3038838fbaa5a059a2c33195bf37f654404e2f0"
   head "https://github.com/ycloud-sean/monitor-cli-task-observer.git", branch: "main"
 
   depends_on arch: :arm64
@@ -22,14 +22,14 @@ class Monitor < Formula
       set -euo pipefail
 
       if ! command -v node >/dev/null 2>&1; then
-        printf 'monitor 需要预先安装 Node.js 22.x，并确保 node 在 PATH 中。\\n' >&2
+        printf 'monitor 需要预先安装 Node.js 22.x，并确保 node 在 PATH 中。\n' >&2
         exit 1
       fi
 
       node_version="$(node -v 2>/dev/null || true)"
-      node_major="$(node -p 'process.versions.node.split(\".\")[0]' 2>/dev/null || true)"
+      node_major="$(node -p 'process.versions.node.split(".")[0]' 2>/dev/null || true)"
       if [[ "$node_major" != "22" ]]; then
-        printf 'monitor 当前要求 Node.js 22.x，实际为: %s\\n' "${node_version:-unknown}" >&2
+        printf 'monitor 当前要求 Node.js 22.x，实际为: %s\n' "${node_version:-unknown}" >&2
         exit 1
       fi
 
